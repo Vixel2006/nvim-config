@@ -8,17 +8,25 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "gopls",    -- Go
-                "clangd",   -- C/C++
+                "gopls",         -- Go
+                "clangd",        -- C/C++
                 "rust_analyzer", -- Rust
-                "pyright",  -- Python
+                "pyright",       -- Python
             },
         })
 
-        local lspconfig = require("lspconfig")
         local servers = { "gopls", "clangd", "rust_analyzer", "pyright" }
-        for _, lsp in ipairs(servers) do
-            lspconfig[lsp].setup({})
+        for _, server in ipairs(servers) do
+            vim.lsp.config[server] = {
+                cmd = { vim.fn.exepath(server) }, -- fallback to Mason’s bin
+                capabilities = vim.lsp.protocol.make_client_capabilities(),
+                settings = {}, -- you can add custom settings here
+            }
+            vim.lsp.start({
+                name = server,
+                cmd = vim.lsp.config[server].cmd,
+                root_dir = vim.fn.getcwd(),
+            })
         end
     end,
 }

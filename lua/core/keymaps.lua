@@ -29,3 +29,20 @@ map("n", "[d", vim.diagnostic.goto_prev, opts)
 map("n", "]d", vim.diagnostic.goto_next, opts)
 map("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>", opts)
 
+-- Debugger
+
+-- Breakpoints
+vim.keymap.set("n", "<leader>mb", function() require("dap").toggle_breakpoint() end, { desc = "Breakpoint" })
+
+-- Control flow
+vim.keymap.set("n", "<leader>mc", function() require("dap").continue() end, { desc = "Continue" })
+vim.keymap.set("n", "<leader>mo", function() require("dap").step_over() end, { desc = "Step Over" })
+vim.keymap.set("n", "<leader>mi", function() require("dap").step_into() end, { desc = "Step Into" })
+vim.keymap.set("n", "<leader>mu", function() require("dap").step_out() end, { desc = "Step Out" })
+
+-- UI
+vim.keymap.set("n", "<leader>muo", function() require("dapui").open() end, { desc = "Open DAP UI" })
+vim.keymap.set("n", "<leader>mux", function() require("dapui").close() end, { desc = "Close DAP UI" })
+vim.keymap.set("n", "<leader>mut", function() require("dapui").toggle() end, { desc = "Toggle DAP UI" })
+
+
