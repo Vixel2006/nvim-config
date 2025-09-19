@@ -81,7 +81,7 @@ return {
     -- Python (debugpy)
     dap.adapters.python = {
       type = "executable",
-      command = mason_path .. "/bin/python",
+      command = vim.fn.exepath("python3"),
       args = { "-m", "debugpy.adapter" },
     }
     dap.configurations.python = {
