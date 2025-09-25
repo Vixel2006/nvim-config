@@ -11,6 +11,10 @@ return {
                     rust = { "rustfmt" },
                     c = { "clang-format" },
                     cpp = { "clang-format" },
+                    javascript = { "prettier" },
+                    typescript = { "prettier" },
+                    javascriptreact = { "prettier" }, -- jsx
+                    typescriptreact = { "prettier" }, -- tsx
                     -- python intentionally left out
                 },
             })

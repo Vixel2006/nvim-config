@@ -12,10 +12,11 @@ return {
                 "clangd",        -- C/C++
                 "rust_analyzer", -- Rust
                 "pyright",       -- Python
+                "ts_ls",         -- js,ts,jsx,tsx
             },
         })
 
-        local servers = { "gopls", "clangd", "rust_analyzer", "pyright" }
+        local servers = { "gopls", "clangd", "rust_analyzer", "pyright", "ts_ls", }
         for _, server in ipairs(servers) do
             vim.lsp.config[server] = {
                 cmd = { vim.fn.exepath(server) }, -- fallback to Mason’s bin
