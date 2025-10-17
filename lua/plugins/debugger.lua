@@ -18,6 +18,21 @@ return {
     -- dap-ui setup
     dapui.setup()
 
+    local icons = {
+      Breakpoint = "",
+      BreakpointCondition = "",
+      BreakpointRejected = "",
+      LogPoint = "",
+      Stopped = "",
+    }
+
+    vim.fn.sign_define("DapBreakpoint", { text = icons.Breakpoint, texthl = "DiagnosticSignError" })
+    vim.fn.sign_define("DapBreakpointCondition", { text = icons.BreakpointCondition, texthl = "DiagnosticSignWarn" })
+    vim.fn.sign_define("DapBreakpointRejected", { text = icons.BreakpointRejected, texthl = "DiagnosticSignHint" })
+    vim.fn.sign_define("DapLogPoint", { text = icons.LogPoint, texthl = "DiagnosticSignInfo" })
+    vim.fn.sign_define("DapStopped", { text = icons.Stopped, texthl = "DiagnosticSignInfo", linehl = "CursorLine" })
+
+
     -- Auto open/close UI
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()

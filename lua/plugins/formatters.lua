@@ -11,6 +11,7 @@ return {
                     rust = { "rustfmt" },
                     c = { "clang-format" },
                     cpp = { "clang-format" },
+                    cuda = { "clang-format" },
                     javascript = { "prettier" },
                     typescript = { "prettier" },
                     javascriptreact = { "prettier" }, -- jsx
